@@ -1,4 +1,4 @@
-package com.example.firstscreen
+package com.example.firstscreen.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,14 +12,15 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
+import androidx.navigation.NavHostController
+import com.example.firstscreen.R
 
 @Composable
-fun RegisterScreen() {
+fun login(navController: NavHostController) {
 
-    var name by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-    var confirmPassword by remember { mutableStateOf("") }
+
 
     Column(
         modifier = Modifier
@@ -37,21 +38,13 @@ fun RegisterScreen() {
         )
 
         Text(
-            text = "Create Account",
+            text = "Login",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold
         )
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        OutlinedTextField(
-            value = name,
-            onValueChange = { name = it },
-            label = { Text("Name") },
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = email,
@@ -70,15 +63,6 @@ fun RegisterScreen() {
             modifier = Modifier.fillMaxWidth()
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        OutlinedTextField(
-            value = confirmPassword,
-            onValueChange = { confirmPassword = it },
-            label = { Text("Confirm Password") },
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth()
-        )
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -88,7 +72,18 @@ fun RegisterScreen() {
                 .fillMaxWidth()
                 .height(50.dp)
         ) {
-            Text("Register")
+            Text("login")
+        }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        Button(
+            onClick = {navController.navigate("welcome")},
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            Text("inicio")
         }
     }
 }
