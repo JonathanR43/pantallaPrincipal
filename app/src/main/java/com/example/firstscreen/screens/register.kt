@@ -22,6 +22,13 @@ fun register(navController: NavController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
+
+    val formValid = name.all { it.isLetter() || it == ' ' } &&
+                email.contains("@") &&
+                phone.length == 10 && phone.all { it.isDigit() } &&
+                password == confirmPassword &&
+                password.isNotEmpty()
 
     Column(
         modifier = Modifier
