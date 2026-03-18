@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.firstscreen.screens.MainScreen
 import com.example.firstscreen.screens.login
 import com.example.firstscreen.screens.register
 import com.example.firstscreen.welcome
@@ -25,6 +26,10 @@ fun navigation() {
         }
         composable("signup") {
             register(navController)
+        }
+
+        composable("mainScreen") {
+            MainScreen(navController)
         }
     }
 }
